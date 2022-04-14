@@ -1,0 +1,29 @@
+ui_menu_headman_search <- ui_user_command_class_atom; ui_user_command_class_view_kb; ui_one_argument_command_class;;
+
+ui_menu_headman_search 
+=> nrel_main_idtf: 
+	[Кто является старостой данной группы?]
+	(* <- lang_ru;; *);
+=> nrel_idtf: 
+	[Этот человек является старостой данной группы]
+	(* <- lang_ru;; *);;
+
+ui_menu_headman_search 
+=> nrel_main_idtf: 
+	[What is headman of the specified entity?]
+	(* <- lang_en;; *);
+=> nrel_idtf: 
+	[Request searches for headman of the specified entity]
+	(* <- lang_en;; *);;
+
+ui_menu_headman_search => ui_nrel_command_template:
+	[*
+		question_find_headman _-> ._question_find_headman_instance
+			(*
+				_-> ui_arg_1;;
+			*);;
+		._question_find_headman_instance _<- question;;
+	*];;
+
+ui_menu_headman_search => ui_nrel_command_lang_template: [Кто является старостой $ui_arg_1] (* <- lang_ru;; *);;
+ui_menu_headman_search => ui_nrel_command_lang_template: [What is headman of $ui_arg_1] (* <- lang_en;; *);;
